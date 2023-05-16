@@ -1,24 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
-  let scrollPosition = 0;
-  let animationId;
+window.addEventListener('DOMContentLoaded', function() {
+  const imageScroll = document.querySelector('.image-scroll');
+  let isHovered = false;
+  let scrollAmount = 1;
 
   function scrollImages() {
-    scrollPosition++;
-    document.querySelector('.image-scroll').scrollLeft = scrollPosition;
-
-    animationId = requestAnimationFrame(scrollImages);
+    if (!isHovered) {
+      imageScroll.scrollLeft += scrollAmount;
+      scrollAmount *= -1;
+    }
+    requestAnimationFrame(scrollImages);
   }
 
-  function stopScroll() {
-    cancelAnimationFrame(animationId);
-  }
+  imageScroll.addEventListener('mouseover', function() {
+    isHovered = true;
+  });
 
-  function resumeScroll() {
-    scrollImages();
-  }
-
-  document.querySelector('.image-scroll').addEventListener('mouseenter', stopScroll);
-  document.querySelector('.image-scroll').addEventListener('mouseleave', resumeScroll);
+  imageScroll.addEventListener('mouseout', function() {
+    isHovered = false;
+  });
 
   scrollImages();
 });
