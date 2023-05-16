@@ -1,19 +1,24 @@
-let scrollPosition = 0;
-let animationId;
+document.addEventListener('DOMContentLoaded', function() {
+  let scrollPosition = 0;
+  let animationId;
 
-function scrollImages() {
-  scrollPosition++;
-  document.querySelector('.image-scroll').scrollLeft = scrollPosition;
+  function scrollImages() {
+    scrollPosition++;
+    document.querySelector('.image-scroll').scrollLeft = scrollPosition;
 
-  animationId = requestAnimationFrame(scrollImages);
-}
+    animationId = requestAnimationFrame(scrollImages);
+  }
 
-function stopScroll() {
-  cancelAnimationFrame(animationId);
-}
+  function stopScroll() {
+    cancelAnimationFrame(animationId);
+  }
 
-function resumeScroll() {
+  function resumeScroll() {
+    scrollImages();
+  }
+
+  document.querySelector('.image-scroll').addEventListener('mouseenter', stopScroll);
+  document.querySelector('.image-scroll').addEventListener('mouseleave', resumeScroll);
+
   scrollImages();
-}
-
-scrollImages();
+});
