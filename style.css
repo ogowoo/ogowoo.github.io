@@ -3,7 +3,7 @@
   overflow: hidden;
   white-space: nowrap;
   padding: 20px 0;
-  animation: scrollImages 20s linear infinite;
+ /* animation: scrollImages 20s linear infinite; */
 }
 
 .image-scroll img {
@@ -30,7 +30,7 @@ body {
   padding: 0;
 }
 
-.container {
+.container {https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
