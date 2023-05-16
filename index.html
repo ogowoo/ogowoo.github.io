@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .image-scroll {
-      overflow-x: scroll;
+      overflow-x: hidden;
       white-space: nowrap;
+      padding: 20px 0;
     }
 
     .image-scroll img {
@@ -17,6 +18,18 @@
       width: 200px;
       height: 200px;
       margin-right: 10px;
+      border-radius: 4px;
+      object-fit: cover;
+      animation: scrollImages 20s infinite linear;
+    }
+
+    @keyframes scrollImages {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
   </style>
 </head>
@@ -47,6 +60,19 @@
   <footer>
     <p>&copy; 2023 域名出售</p>
   </footer>
+
+  <script>
+    // 停止滚动的动画
+    const imageScrollSection = document.querySelector('.image-scroll');
+    imageScrollSection.addEventListener('mouseover', function () {
+      this.style.animationPlayState = 'paused';
+    });
+
+    // 恢复滚动的动画
+    imageScrollSection.addEventListener('mouseout', function () {
+      this.style.animationPlayState = 'running';
+    });
+  </script>
 </body>
 
 </html>
