@@ -37,7 +37,7 @@
     </div>
   </section>
 
-  <section class="image-scroll">
+  <section class="image-scroll" onmouseenter="stopScroll()" onmouseleave="resumeScroll()">
     <div class="container">
       <img src="image1.jpg" alt="Image 1">
       <img src="image2.jpg" alt="Image 2">
@@ -52,28 +52,25 @@
   </footer>
 
   <script>
-    (function () {
-      const imageScrollSection = document.querySelector('.image-scroll');
-      let scrollPosition = 0;
-      let animationId;
+    let scrollPosition = 0;
+    let animationId;
 
-      function scrollImages() {
-        scrollPosition++;
-        imageScrollSection.scrollLeft = scrollPosition;
+    function scrollImages() {
+      scrollPosition++;
+      document.querySelector('.image-scroll').scrollLeft = scrollPosition;
 
-        animationId = requestAnimationFrame(scrollImages);
-      }
+      animationId = requestAnimationFrame(scrollImages);
+    }
 
-      imageScrollSection.addEventListener('mouseenter', function () {
-        cancelAnimationFrame(animationId);
-      });
+    function stopScroll() {
+      cancelAnimationFrame(animationId);
+    }
 
-      imageScrollSection.addEventListener('mouseleave', function () {
-        scrollImages();
-      });
-
+    function resumeScroll() {
       scrollImages();
-    })();
+    }
+
+    scrollImages();
   </script>
 </body>
 
