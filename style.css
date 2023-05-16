@@ -14,7 +14,7 @@
   border-radius: 4px;
   object-fit: cover;
 }
-
+/*
 @keyframes scrollImages {
   0% {
     transform: translateX(0);
@@ -23,7 +23,7 @@
     transform: translateX(-100%);
   }
 }
-
+*/
 body {
   font-family: Arial, sans-serif;
   margin: 0;
